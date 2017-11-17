@@ -1,16 +1,16 @@
 import Vue from 'vue'
-// import App from './App.vue'
 import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
+// import VueResource from 'vue-resource'
 
 //开启debug模式
 Vue.config.debug = true;
 
 Vue.use(VueRouter);
-Vue.use(VueResource);
+// Vue.use(VueResource);
 
 // 定义组件, 也可以像教程之前教的方法从别的文件引入
-const First = { template: '<div><h2>我是第 1 个子页面</h2></div>' }
+const User = { template: '<div>User {{ $route.params.id }}</div>' }
+import firstcomponent from './component/firstcomponent.vue'
 import secondcomponent from './component/secondcomponent.vue'
 
 // 1. 定义（路由）组件。
@@ -24,7 +24,8 @@ import secondcomponent from './component/secondcomponent.vue'
 // 或者，只是一个组件配置对象。
 // 我们晚点再讨论嵌套路由。
 const routes = [
-  { path: '/foo', component: First },
+  { path: '/user/:id', component: User },
+  { path: '/radar', component: firstcomponent },
   { path: '/bar', component: secondcomponent }
 ]
 

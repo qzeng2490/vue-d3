@@ -7,10 +7,19 @@
 
 <script type="text/javascript">
 export default {
-  data () {
-    return {
-      author: "微信公众号 jinkey-love"
-    }
+	name: 'vue-d3-radar',
+	methods: {
+		renderChart: function(filePath){
+
+		}
+	},
+	mounted: function() {
+    this.renderChart("src/assets/radar.csv");
+  },
+  data: function(){
+  	return {
+  		author: "Qiang Zeng"
+  	}
   }
 }
 </script>
