@@ -2,6 +2,8 @@
   <svg id="secondcomponent" width="960" height="500">
     
   </svg>
+
+  
 </template>
 
 <script>
@@ -169,7 +171,7 @@ export default {
             .text("周期(s)");
       });
     }
-    
+
   },
   mounted: function() {
     this.renderChart("src/assets/data.csv","src/assets/cycle.csv");
@@ -177,12 +179,12 @@ export default {
 }
 </script>
 
-<style>
-.axis .domain {
+<style scoped>
+.axis >>> .domain {
   display: none;
 }
 
-div.tooltip { 
+>>> div.tooltip { 
     position: absolute;     
     text-align: center;     
     width: 60px;          
@@ -195,13 +197,13 @@ div.tooltip {
     pointer-events: none;     
 }
 
-.line {
+>>> .line {
   fill: none;
   stroke: steelblue;
   stroke-width: 1.5px;
 }
 
-.dot {
+>>> .dot {
   fill: white;
   stroke: steelblue;
   stroke-width: 1.5px;
