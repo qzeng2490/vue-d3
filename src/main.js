@@ -12,7 +12,7 @@ Vue.use(VueRouter);
 const User = { template: '<div>User {{ $route.params.id }}</div>' }
 import firstcomponent from './component/firstcomponent.vue'
 import secondcomponent from './component/secondcomponent.vue'
-
+import thirdcomponent from './component/thirdcomponent.vue'
 // 1. 定义（路由）组件。
 // 可以从其他文件 import 进来
 // const Foo = { template: '<div>foo</div>' }
@@ -26,7 +26,8 @@ import secondcomponent from './component/secondcomponent.vue'
 const routes = [
   { path: '/user/:id', component: User },
   { path: '/radar', component: firstcomponent },
-  { path: '/bar', component: secondcomponent }
+  { path: '/bar', component: secondcomponent },
+  { path: '/pie', component: thirdcomponent }
 ]
 
 // 3. 创建 router 实例，然后传 `routes` 配置

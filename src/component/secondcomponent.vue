@@ -8,9 +8,12 @@
 
 <script>
 import * as d3 from 'd3';
-const cycleData = ""
+const flowData = "Time,卡口,视频\n0:00,2704,4499\n1:00,2027,3277\n2:00,1208,2141\n3:00,1140,1938\n4:00,8943,1558\n5:00,7374,1345"
+
+const cycleData = "Time,Cycle\n0:00,125\n1:00,277\n2:00,208\n3:00,558\n4:00,737\n5:00,345";
+
 export default {
-  name: 'vue-d3-test',
+  name: 'vue-d3-bargroup',
   methods: {
     renderChart: function(filePath1,filePath2) {
       
@@ -40,13 +43,18 @@ export default {
                   .x(function(d) { return x0(d.Time); })
                   .y(function(d) { return y(d.Cycle); });
 
-      d3.csv(filePath1, function(d, i, columns) {
-        for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
-        return d;
-      }, function(error, data) {
-        if (error) throw error;
+      var data = d3.csvParse(flowData);
 
-        console.log(data);
+      // d3.csvParse(flowData, function(d, i, columns) {
+      //   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
+      //   return d;
+      // }, function(error, data) {
+      //   if (error) throw error;
+
+      data.map(function(d,i){
+        for (var i = 1, n = data.columns.length; i < n; ++i) d[data.columns[i]] = +d[data.columns[i]];
+      })
+        // console.log(data);
 
         var keys = data.columns.slice(1);
         x0.domain(data.map(function(d) { return d.Time; }));
@@ -118,16 +126,20 @@ export default {
             .attr("y", 9.5)
             .attr("dy", "0.32em")
             .text(function(d) { return d; });
-      });
+      // });
 
-      d3.csv(filePath2, function(d, i, columns) {
-        for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
-        return d;
-      }, function(error, data) {
-        if (error) throw error;
+      // d3.csvParse(cycleData, function(d, i, columns) {
+      //   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
+      //   return d;
+      // }, function(error, data) {
+      //   if (error) throw error;
+      data = d3.csvParse(cycleData);
+      data.map(function(d,i){
+        for (var i = 1, n = data.columns.length; i < n; ++i) d[data.columns[i]] = +d[data.columns[i]];
+      })
 
         y.domain([0, d3.max(data, function(d) { return d.Cycle; })]).nice();
-        console.log(data);
+        // console.log(data);
         //add Line
         g.append("path")
           .attr("class", "line")
@@ -169,7 +181,6 @@ export default {
             .attr("font-weight", "bold")
             .attr("text-anchor", "start")
             .text("周期(s)");
-      });
     }
 
   },
@@ -179,12 +190,8 @@ export default {
 }
 </script>
 
-<style scoped>
-.axis >>> .domain {
-  display: none;
-}
-
->>> div.tooltip { 
+<style>
+  div.tooltip { 
     position: absolute;     
     text-align: center;     
     width: 60px;          
@@ -196,6 +203,14 @@ export default {
     border-radius: 8px;     
     pointer-events: none;     
 }
+
+</style>
+
+<style scoped>
+.axis >>> .domain {
+  display: none;
+}
+
 
 >>> .line {
   fill: none;
@@ -210,27 +225,3 @@ export default {
 }
 
 </style>
-
-      // var width = 420,
-      //     barHeight = 20;
-      // var x = d3.scaleLinear()
-      //     .domain([0, d3.max(data)])
-      //     .range([0, width]);
-      // var chart = d3.select(this.$el)
-      //     .attr("width", width)
-      //     .attr("height", barHeight * data.length);
-      // var d = chart.selectAll("g")
-      //     .data(data);
-      // d.exit().remove();
-      // var g = d.enter().append("g")
-      //     .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
-      // g.selectAll("rect").remove();
-      // g.selectAll("text").remove();
-      // g.append("rect")
-      //     .attr("width", x)
-      //     .attr("height", barHeight - 1);
-      // g.append("text")
-      //     .attr("x", function(d) { return x(d) - 3; })
-      //     .attr("y", barHeight / 2)
-      //     .attr("dy", ".35em")
-      //     .text(function(d) { return d; });
