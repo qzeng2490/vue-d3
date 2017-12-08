@@ -6,6 +6,13 @@
 
 <script type="text/javascript">
 import * as d3 from 'd3';
+const cycle = 127;
+const dist = [0,300,200,350];
+const greenStart = [0,10,20,30];
+const startReverseGreen = [2,8,23,44];
+const ot = [0,23,32,26]; // 与上一个路口的相位差
+const green = [23,34,44,28];
+const greenReverse = [16,32,22,39];
 
 
 export default {
@@ -14,7 +21,7 @@ export default {
 		
 	},
 	mounted: function() {
-    this.renderChart("src/assets/radar.csv");
+    
   },
   data: function(){
   	return {

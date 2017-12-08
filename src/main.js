@@ -9,10 +9,10 @@ Vue.use(VueRouter);
 // Vue.use(VueResource);
 
 // 定义组件, 也可以像教程之前教的方法从别的文件引入
-const User = { template: '<div>User {{ $route.params.id }}</div>' }
+// const User = { template: '<div>User {{ $route.params.id }}</div>' }
 import firstcomponent from './component/firstcomponent.vue'
-import secondcomponent from './component/secondcomponent.vue'
-import thirdcomponent from './component/thirdcomponent.vue'
+// import secondcomponent from './component/secondcomponent.vue'
+// import thirdcomponent from './component/thirdcomponent.vue'
 // 1. 定义（路由）组件。
 // 可以从其他文件 import 进来
 // const Foo = { template: '<div>foo</div>' }
@@ -24,10 +24,10 @@ import thirdcomponent from './component/thirdcomponent.vue'
 // 或者，只是一个组件配置对象。
 // 我们晚点再讨论嵌套路由。
 const routes = [
-  { path: '/user/:id', component: User },
+  // { path: '/user/:id', component: User },
   { path: '/radar', component: firstcomponent },
-  { path: '/bar', component: secondcomponent },
-  { path: '/pie', component: thirdcomponent }
+  // { path: '/bar', component: secondcomponent },
+  // { path: '/pie', component: thirdcomponent }
 ]
 
 // 3. 创建 router 实例，然后传 `routes` 配置
