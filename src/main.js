@@ -25,7 +25,7 @@ import firstcomponent from './component/firstcomponent.vue'
 // 我们晚点再讨论嵌套路由。
 const routes = [
   // { path: '/user/:id', component: User },
-  { path: '/radar', component: firstcomponent },
+  { path: '/greenwave', component: firstcomponent },
   // { path: '/bar', component: secondcomponent },
   // { path: '/pie', component: thirdcomponent }
 ]
