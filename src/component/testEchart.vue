@@ -43,6 +43,6 @@
   .iCountUp {
     font-size: 12em;
     margin: 0;
-    color: #4d63bc;
+    color: #191a22;
   }
 </style>
